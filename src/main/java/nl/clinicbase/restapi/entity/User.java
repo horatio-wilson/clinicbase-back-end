@@ -3,7 +3,7 @@ package nl.clinicbase.restapi.entity;
 import javax.persistence.Entity;
 
 @Entity(name = "users")
-public class User {
+public class User extends AuditableEntity {
 
     private String firstName;
     private String lastName;
