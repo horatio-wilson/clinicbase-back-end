@@ -1,8 +1,11 @@
 package nl.clinicbase.restapi.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 
-@Entity(name = "users")
+@MappedSuperclass
 public class User extends AuditableEntity {
 
     private String firstName;
