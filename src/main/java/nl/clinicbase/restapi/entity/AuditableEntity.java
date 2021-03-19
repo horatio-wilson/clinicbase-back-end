@@ -2,23 +2,19 @@ package nl.clinicbase.restapi.entity;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @MappedSuperclass
 public class AuditableEntity extends BaseEntity {
 
-    @Column(name = "created_on")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdOn;
+    @Column(name = "created_on", columnDefinition = "TIMESTAMP")
+    private LocalDateTime createdOn;
 
     @Column(name = "created_by")
     private String createdBy;
 
-    @Column(name = "updated_on")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updatedOn;
+    @Column(name = "updated_on", columnDefinition = "TIMESTAMP")
+    private LocalDateTime updatedOn;
 
     @Column(name = "updated_by")
     private String updatedBy;
@@ -27,18 +23,18 @@ public class AuditableEntity extends BaseEntity {
 
     }
 
-    public AuditableEntity(Date createdOn, String createdBy, Date updatedOn, String updatedBy) {
+    public AuditableEntity(LocalDateTime createdOn, String createdBy, LocalDateTime updatedOn, String updatedBy) {
         this.createdOn = createdOn;
         this.createdBy = createdBy;
         this.updatedOn = updatedOn;
         this.updatedBy = updatedBy;
     }
 
-    public Date getCreatedOn() {
+    public LocalDateTime getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(Date createdOn) {
+    public void setCreatedOn(LocalDateTime createdOn) {
         this.createdOn = createdOn;
     }
 
@@ -50,11 +46,11 @@ public class AuditableEntity extends BaseEntity {
         this.createdBy = createdBy;
     }
 
-    public Date getUpdatedOn() {
+    public LocalDateTime getUpdatedOn() {
         return updatedOn;
     }
 
-    public void setUpdatedOn(Date updatedOn) {
+    public void setUpdatedOn(LocalDateTime updatedOn) {
         this.updatedOn = updatedOn;
     }
 
