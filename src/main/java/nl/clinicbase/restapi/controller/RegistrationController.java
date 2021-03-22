@@ -62,8 +62,8 @@ public class RegistrationController {
         Set<String> strRoles = registrationRequestDto.getRole();
         Set<Role> roles = new HashSet<>();
 
+        // If no roles are specified, we create a user with ROLE_EMPLOYEE as default
         if (strRoles == null) {
-            System.out.println(EnumRole.ROLE_EMPLOYEE.name());
             Role userRole = roleRepository.findByRoleName(EnumRole.ROLE_EMPLOYEE.name())
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             roles.add(userRole);
@@ -86,6 +86,12 @@ public class RegistrationController {
                         Role docRole = roleRepository.findByRoleName(EnumRole.ROLE_DOCTOR.name())
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(docRole);
+
+                        break;
+                    case "employee":
+                        Role employeeRole = roleRepository.findByRoleName(EnumRole.ROLE_EMPLOYEE.name())
+                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                        roles.add(employeeRole);
 
                         break;
                     default:
