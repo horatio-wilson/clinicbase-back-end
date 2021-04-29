@@ -23,6 +23,11 @@ public class AuditableEntity extends BaseEntity {
 
     }
 
+    public AuditableEntity(LocalDateTime createdOn, String createdBy) {
+        this.createdOn = createdOn;
+        this.createdBy = createdBy;
+    }
+
     public AuditableEntity(LocalDateTime createdOn, String createdBy, LocalDateTime updatedOn, String updatedBy) {
         this.createdOn = createdOn;
         this.createdBy = createdBy;

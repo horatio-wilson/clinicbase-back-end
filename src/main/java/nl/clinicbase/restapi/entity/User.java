@@ -39,6 +39,7 @@ public class User extends AuditableEntity {
     }
 
     public User(String firstName, String lastName, String password, String email) {
+        super(LocalDateTime.now(), "SYSTEM");
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
